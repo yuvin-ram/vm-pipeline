@@ -2,13 +2,6 @@
     - name: Capture VM Image on Ubuntu
       hosts: localhost
       connection: local
-      vars:
-        resource_group: "{{ mygroup }}"
-        vm_name: linux1
-        vm_image_name: linux image
-        location: eastus
-        admin_username: praveen
-        admin_password: Praveen@123
       tasks:
     
         - name: Create a resource group for vnet
