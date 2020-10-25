@@ -1,7 +1,7 @@
----
-- name: Capture VM Image on Ubuntu
-  hosts: localhost
-  connection: local
+trigger:
+- master:
+pool:
+  vmimage: 'ubuntu-latest'
   tasks:
     - name: Create a resource group for vnet
       azure_rm_resourcegroup:
