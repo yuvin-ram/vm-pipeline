@@ -1,35 +1,31 @@
-trigger:
-- master
-pool:
-  vmImage: redhat-latest
-stages:
-- stage: 
-  name: Create a resource group for vnet
-  azure_rm_resourcegroup:
-  name: mygroup
-  location: eastus
-    
-  name: Create virtual network
-  azure_rm_virtualnetwork:
-  resource_group: mygroup
-  name: linuxVnet
-  address_prefixes: "10.0.0.0/16"
-    
-  name: Add subnet
-  azure_rm_subnet:
-  resource_group: mygroup
-  name: linuxSubnet
-  address_prefix: "10.0.1.0/24"
-  virtual_network: linuxVnet
-    
-  name: Create minimal VM with defaults
-  azure_rm_virtualmachine:
-  resource_group: mygroup
-  admin_username: praveen
-  admin_password: Praveen@123
-  vm_size: Standard_B1ms
-  image:
-  offer: redhatServer
-  publisher: redhat
-  sku: 6.10-LTS
-  version: latest
+---
+- name: Capture VM Image on Ubuntu
+  hosts: localhost
+  connection: local
+  tasks:
+   - name: Create a resource group for vnet
+     azure_rm_resourcegroup:
+       name: "{{ mygroup }}"
+       location: "{{ eastus }}"
+   - name: Create virtual network
+     azure_rm_virtualnetwork:
+       resource_group: "{{ mygroup }}"
+       name: linuxVnet
+       address_prefixes: "10.0.0.0/16"
+   - name: Add subnet
+     azure_rm_subnet:
+       resource_group: "{{ mygroup }}"
+       name: linuxSubnet
+       address_prefix: "10.0.1.0/24"
+       virtual_network: linuxVnet
+   - name: Create minimal VM with defaults
+     azure_rm_virtualmachine:
+       resource_group: "{{ mygroup }}"
+       name: "{{ linux1 }}"
+       admin_username: "{{ praveen }}"
+       admin_password: "{{ Praveen@123 }}"
+       vm_size: Standard_B1ms
+       image:
+          offer: redhatServer
+          publisher: redhat
+          version: latest
