@@ -1,5 +1,8 @@
----
-- name: Capture VM Image on Ubuntu
+trigger:
+- master
+pool:
+  vmImage: redhat-latest
+- name: Capture VM image
   hosts: localhost
   connection: local
   tasks:
