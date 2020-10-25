@@ -21,16 +21,15 @@
        address_prefix: "10.0.1.0/24"
        virtual_network: linuxVnet
     
-    - name: Create minimal VM with defaults
-      azure_rm_virtualmachine:
-        resource_group: mygroup
-        name: linux1
-        admin_username: praveen
-        admin_password: Praveen@123
-        vm_size: Standard_B1ms
-        image:
-          offer: redhatServer
-          publisher: redhat
-          sku: 6.10-LTS
-          version: latest
-
+   - name: Create minimal VM with defaults
+     azure_rm_virtualmachine:
+     resource_group: mygroup
+     name: linux1
+     admin_username: praveen
+     admin_password: Praveen@123
+     vm_size: Standard_B1ms
+     image:
+       offer: redhatServer
+       publisher: redhat
+       sku: 6.10-LTS
+       version: latest
