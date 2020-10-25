@@ -1,5 +1,5 @@
 ---
-- name: Capture VM Image on Ubuntu
+- name: Capture VM Image 
   hosts: localhost
   connection: local
   tasks:
