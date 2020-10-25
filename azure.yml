@@ -2,9 +2,6 @@ trigger:
 - master
 pool:
   vmImage: redhat-latest
-- name: Capture VM image
-  hosts: localhost
-  connection: local
   tasks:
    - name: Create a resource group for vnet
      azure_rm_resourcegroup:
